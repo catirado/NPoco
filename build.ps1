@@ -7,7 +7,7 @@
 Properties {
     $build_dir = Split-Path $psake.build_script_file    
     $build_artifacts_dir = "$build_dir\build\"
-    $solution_file = "$build_dir\src\NPoco\NPoco.csproj"
+    $solution_file = "$build_dir\NPoco.build"
 }
 
 FormatTaskName (("-"*25) + "[{0}]" + ("-"*25))

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+	<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\Lib\MSBuild.Community.Tasks.dll" TaskName="NUnit"/>
+	
+	<PropertyGroup> 
+		<OutDir>$(MSBuildStartupDirectory)\OutDir\</OutDir>
+		
+		<Configuration>Release</Configuration>
+		
+		<SolutionProperties>
+		  OutDir=$(OutDir);
+		  PlatformTarget=x86;
+		  Configuration=$(Configuration)
+		</SolutionProperties>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Solution Include="src\NPoco.sln">
+			<Properties>
+				$(SolutionProperties)
+			</Properties>
+		</Solution>
+	</ItemGroup>
+
+	<Target Name="Clean">
+	  <RemoveDir Directories="$(OutDir)" />
+	</Target>
+
+	<Target Name="Build">
+	<Message Text="Run called." />
+	<CallTarget Targets="BuildSolution" />
+	<CallTarget Targets="RunTests" />
+	</Target>
+
+	<Target Name="BuildSolution">
+	<Message Text="BuildSolution called." />
+	<MSBuild Projects="@(Solution)"/>
+	</Target>
+
+	<PropertyGroup>
+	<NUnitResultsFile>$(OutDir)\nunit-result.xml</NUnitResultsFile>
+	</PropertyGroup>
+
+	<Target Name="RunTests">
+	<CreateItem Include="$(OutDir)*.Tests.dll">
+	  <Output TaskParameter="Include" ItemName="TestAssembly" />
+	</CreateItem>
+
+	<Message Text="+++++++++++++++++"/>
+	<Message Text="@(TestAssembly)"/>
+
+	<NUnit Assemblies="@(TestAssembly)" 
+		ToolPath="C:\Program Files (x86)\NUnit 2.6.4\bin"
+		OutputXmlFile="$(NUnitResultsFile)"
+	/>
+	</Target>
+  
+</Project>
