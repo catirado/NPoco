@@ -53,6 +53,7 @@
 	    Force32Bit="true"
 		ToolPath="C:\Program Files (x86)\NUnit 2.6.4\bin"
 		OutputXmlFile="$(NUnitResultsFile)"
+		ContinueOnError="true"
 	/>
 	</Target>
   
