@@ -31,7 +31,7 @@
 	<Target Name="Build">
 	<Message Text="Run called." />
 	<CallTarget Targets="BuildSolution" />
-	<!--<CallTarget Targets="RunTests" />-->
+	<CallTarget Targets="RunTests" />
 	</Target>
 
 	<Target Name="BuildSolution">
