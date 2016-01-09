@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
 	<UsingTask AssemblyFile="$(MSBuildStartupDirectory)\lib\MSBuild.Community.Tasks.dll" TaskName="NUnit"/>
-	
+
 	<PropertyGroup> 
 		<OutDir>$(MSBuildStartupDirectory)\OutDir\</OutDir>
 		
@@ -12,6 +12,8 @@
 		  PlatformTarget=x86;
 		  Configuration=$(Configuration)
 		</SolutionProperties>
+		
+		<NUnitPath>C:\Program Files (x86)\NUnit 2.6.4\bin\</NUnitPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -56,5 +58,5 @@
 		ContinueOnError="true"
 	/>
 	</Target>
-  
+	
 </Project>
