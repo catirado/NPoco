@@ -42,7 +42,7 @@
 	</PropertyGroup>
 
 	<Target Name="RunTests">
-	<CreateItem Include="$(OutDir)*.Tests.dll">
+	<CreateItem Include="$(OutDir)\*.Tests.dll">
 	  <Output TaskParameter="Include" ItemName="TestAssembly" />
 	</CreateItem>
 

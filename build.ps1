@@ -22,6 +22,7 @@ Task Build35 -Depends Build40 {
 
 Task Build40 -Depends Clean { 
     Write-Host "Building 4.0 $solution_file" -ForegroundColor Green
+	Write-Host $build_artifacts_dir
 	Exec { msbuild "$solution_file" /t:Build /p:Configuration=Release /v:quiet /p:OutDir="$build_artifacts_dir\40\" } 
 }
 
